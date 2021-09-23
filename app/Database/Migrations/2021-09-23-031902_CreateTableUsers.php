@@ -22,7 +22,7 @@ class CreateTableUsers extends Migration
                 'constraint'     => '100',
                 'null'           => true,
             ],
-            'user_mail'       => [
+            'user_email'       => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '100',
                 'null'           => true,
