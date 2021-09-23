@@ -25,7 +25,6 @@ class Registration extends BaseController {
         //include helper form
         helper(['form']);
 
-
         $data['title'] = "Регистрация";
         echo view('templates/header', $data);
         echo view('pages/registration', $data);
