@@ -1,3 +1,16 @@
+<?php
+
+    if(isset($errors)) {
+
+        echo '<div style="color: red">';
+
+        foreach ($errors as $error)
+            echo $error . '</br>';
+
+        echo '</div>';
+    }
+?>
+
 <form action="/registration/save" method="post">
     <div class="mb-3">
         <label for="InputForName" class="form-label">Name</label>
@@ -17,3 +30,5 @@
     </div>
     <button type="submit" class="btn btn-primary">Register</button>
 </form>
+<br>
+<a href="<?= site_url('authorization'); ?>">Авторизироваться</a>

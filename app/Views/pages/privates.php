@@ -1,5 +1,6 @@
 <?php
 /* @var $title app\Models\UserModel */
+/* @var $user_email app\Controllers\Privates */
 ?>
 
 <style>

@@ -8,7 +8,11 @@ class Authorization extends BaseController {
     public function index()
     {
         helper(['form']);
-        echo view('pages/authorization');
+
+        $data['title'] = "Регистрация";
+        echo view('templates/header', $data);
+        echo view('pages/authorization', $data);
+        echo view('templates/footer', $data);
     }
 
     public function auth()
@@ -20,7 +24,7 @@ class Authorization extends BaseController {
         $data = $model->where('user_email', $email)->first();
         if($data){
             $pass = $data['user_password'];
-            $verify_pass = password_verify($password, $pass);
+            $verify_pass = !empty($password) && password_verify($password, $pass);
             if($verify_pass){
                 $ses_data = [
                     'user_id'       => $data['user_id'],

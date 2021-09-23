@@ -24,12 +24,18 @@ class Registration extends BaseController {
     {
         //include helper form
         helper(['form']);
-        $data = [];
+
+
+        $data['title'] = "Регистрация";
+        echo view('templates/header', $data);
         echo view('pages/registration', $data);
+        echo view('templates/footer', $data);
     }
 
     public function save()
     {
+        $session = session();
+
         //include helper form
         helper(['form']);
         //set rules validation form
@@ -51,7 +57,6 @@ class Registration extends BaseController {
             $user_id = $model->insert_data($data);
             $data['validation'] = $this->validator;
 
-            $session = session();
             $ses_data = [
                 'user_id'       => $user_id,
                 'user_name'     => $data['user_name'],
@@ -62,8 +67,16 @@ class Registration extends BaseController {
 
             return redirect()->to('privates');
         }else{
-            $data['validation'] = $this->validator;
+
+            $errors = $this->validator->getErrors();
+            $data['title'] = "Регистрация";
+            $data['errors'] = $errors;
+
+            //$session->setFlashdata('msg', 'Wrong Password');
+
+            echo view('templates/header', $data);
             echo view('pages/registration', $data);
+            echo view('templates/footer', $data);
         }
 
     }
